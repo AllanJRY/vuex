@@ -3,10 +3,10 @@
     <h2 class="view-title">Votre panier</h2>
     <CartBikesList :items="cartProducts"/>
     <div class="cart-total-price">
-      Prix total: <span class="total-price">{{ cartTotalPrice }}</span>€
+      Prix total: <span class="total-price">0</span>€
     </div>
     <div class="confirm-order">
-      <button :disabled="!canOrder" @click="saveOrder({products: cartProducts, totalPrice: cartTotalPrice})">Valider commande</button>
+      <button :disabled="!canOrder">Valider commande</button>
       <p v-if="insufficientFunds">Vous n'avez pas assez de fonds</p>
     </div>
   </div>
@@ -14,29 +14,22 @@
 
 <script>
 import CartBikesList from "@/components/cart/CartBikesList";
-import {mapActions, mapGetters, mapMutations} from "vuex";
 
 export default {
   name: 'CartView',
   components: {CartBikesList},
+  data() {
+      return {
+        cartProducts: [],
+      }
+  },
   computed: {
-    ...mapGetters([
-      "cartProducts",
-      "cartTotalPrice",
-      "cartProductsCount",
-      "funds",
-    ]),
     insufficientFunds() {
-      return this.funds < this.cartTotalPrice;
+      return true;
     },
     canOrder() {
-      return !this.insufficientFunds && (this.cartProductsCount > 0);
+      return !this.insufficientFunds && (this.cartProducts.length > 0);
     },
-  },
-  methods: {
-    ...mapActions([
-        "saveOrder",
-    ]),
   },
 }
 </script>

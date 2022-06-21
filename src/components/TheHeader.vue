@@ -4,11 +4,11 @@
       <router-link :to="{name: 'bikes'}">Les vélos</router-link>
       <div class="nav-right-items">
         <router-link :to="{name: 'cart'}">
-          <font-awesome-icon icon="fa-solid fa-cart-shopping" /> Panier ({{cartProductsCount}})
+          <font-awesome-icon icon="fa-solid fa-cart-shopping" /> Panier (0)
         </router-link>
         <router-link :to="{name: 'orders'}">Mes commandes</router-link>
         <div class="funds">
-          Mes fonds : {{ funds }}€
+          Mes fonds : 0€
         </div>
       </div>
     </nav>
@@ -16,16 +16,9 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 
 export default {
   name: "TheHeader",
-  computed: {
-    ...mapGetters([
-        "cartProductsCount",
-        "funds",
-    ]),
-  }
 }
 </script>
 

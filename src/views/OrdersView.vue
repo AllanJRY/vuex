@@ -19,14 +19,13 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 
 export default {
   name: "OrdersView",
-  computed: {
-    ...mapGetters([
-        "orders"
-    ]),
+  data() {
+    return {
+      orders: [],
+    }
   }
 }
 </script>

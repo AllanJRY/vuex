@@ -10,14 +10,13 @@
         <div class="price">
           {{item.price}} €
         </div>
-        <button @click="addBikeToCart(item)">Ajouter au panier</button>
+        <button>Ajouter au panier</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapMutations} from "vuex";
 
 export default {
   name: "BikesListItem",
@@ -27,11 +26,6 @@ export default {
       required: true,
     }
   },
-  methods: {
-    ...mapMutations([
-        "addBikeToCart",
-    ])
-  }
 }
 </script>
 

@@ -16,7 +16,7 @@
 
 <script>
 import CartBikesListItem from "@/components/cart/CartBikesListItem";
-import {mapGetters} from "vuex";
+
 export default {
   name: "CartBikesList",
   components: {CartBikesListItem},

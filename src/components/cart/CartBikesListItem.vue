@@ -5,18 +5,17 @@
           icon="fa-solid fa-xmark"
           class="remove-btn"
           title="Retirer du panier"
-          @click="removeBikeFromCart({bike: cartProduct.bike, quantity: cartProduct.quantity})"/>
+          />
     </td>
     <td>{{ cartProduct.bike.name }}</td>
     <td>
-      <input type="number" v-model="cartProductQuantity">
+      {{ cartProduct.quantity }}
     </td>
     <td class="price-cell">{{ cartProduct.bike.price }}€</td>
   </tr>
 </template>
 
 <script>
-import {mapMutations} from "vuex";
 
 export default {
   name: "CartBikesListItem",
@@ -25,22 +24,6 @@ export default {
       type: Object,
       required: true,
     }
-  },
-  computed: {
-      cartProductQuantity: {
-        get() {
-          return this.cartProduct.quantity;
-        },
-        set(quantity) {
-          this.updateBikeFromCart({bike: this.cartProduct.bike, quantity: quantity < 0 ? 0 : quantity })
-        },
-      }
-  },
-  methods: {
-    ...mapMutations([
-      "removeBikeFromCart",
-      "updateBikeFromCart",
-    ]),
   },
 }
 </script>

@@ -1,32 +1,55 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <TheHeader />
+    <main class="container-fluid">
+      <router-view/>
+    </main>
   </div>
 </template>
 
+<script>
+import TheHeader from "@/components/TheHeader";
+export default {
+  components: {TheHeader}
+}
+</script>
+
 <style lang="scss">
+:root {
+  --primary-color: #B97375;
+  --secondary-color: #2D2D34;
+  --text-light-color: #E2DCDE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+button {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  color: var(--text-light-color);
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  &:disabled {
+    background-color: var(--text-light-color);
+    border-color: var(--text-light-color);
+    color: grey;
   }
+}
+
+.view-title {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--primary-color);
 }
 </style>
